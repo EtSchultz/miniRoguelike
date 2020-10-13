@@ -5,9 +5,16 @@ ROOM_BORDER_SPRITE = 'sprites/map_tile.png'
 PLAYER_STANDING_SPRITE_PATH = 'sprites/player_standing.png'
 PLAYER_LEFT_LEG_DOWN_SPRITE_PATH = 'sprites/player_move_0.png'
 PLAYER_RIGHT_LEG_DOWN_SPRITE_PATH = 'sprites/player_move_1.png'
+PLAYER_UP_STANDING_SPRITE_PATH = 'sprites/player_up_standing.png'
+PLAYER_LEFT_STANDING_SPRITE_PATH = 'sprites/player_left_standing.png'
+PLAYER_RIGHT_STANDING_SPRITE_PATH = 'sprites/player_right_standing.png'
 PLAYER_SPRITE_SHEET_PATH = 'sprites/player_sheet.png'
 
 QUESTION_MARK_SPRITE_PATH = 'sprites/question_mark.png'
+
+MENU_BORDER_SPRITE = 'sprites/menu_border.png'
+
+INITIAL_SELECT_BORDER_SPRITE = 'sprites/initial_item_select.png'
 
 PLAYER_SPRITE_X = 576
 PLAYER_SPRITE_Y = 268
@@ -21,16 +28,13 @@ PLAYER_FRICT = 0.9
 DSPWN_RNG = 50
 TRACING_ENABLED = false
 
-NAMES_SIZE = 6
-NAMES = ["Terrible",
-         "Poor",
-         "Unremarkable",
-         "Acceptable",
-         "Exceptional",
-         "Glorious"]
+NAMES_SIZE = 3
+NAMES = ["poor",
+         "fair",
+         "fine"]
 
-TYPES_SIZE = 4
-TYPES = ["Sword", "Axe", "Hammer", "Fist"]
+TYPES_SIZE = 3
+TYPES = ["sword", "axe", "hammer"]
 
 EXAMPLE_MAP =
   [0,0,0,0,0,0,0,0,0,0,
@@ -55,13 +59,54 @@ def game_border_sprite
   }
 end
 
-def player_default_sprite
+def player_down_standing
   {
     x: 576,
     y: 296,
     w: PLAYER_SPRITE_W, 
     h: PLAYER_SPRITE_H,
     path: PLAYER_STANDING_SPRITE_PATH
+  }
+end
+
+def player_down_move_0
+  {
+    x: 576,
+    y: 296,
+    w: PLAYER_SPRITE_W, 
+    h: PLAYER_SPRITE_H,
+    path: PLAYER_LEFT_LEG_DOWN_SPRITE_PATH
+  }
+end
+
+def player_up_standing
+  {
+    x: 576,
+    y: 296,
+    w: PLAYER_SPRITE_W, 
+    h: PLAYER_SPRITE_H,
+    path: PLAYER_UP_STANDING_SPRITE_PATH
+  }
+end
+
+def player_left_standing
+  {
+    x: 576,
+    y: 296,
+    w: PLAYER_SPRITE_W, 
+    h: PLAYER_SPRITE_H,
+    path: PLAYER_LEFT_STANDING_SPRITE_PATH
+  }
+end
+
+def player_right_standing
+  {
+    x: 576,
+    y: 296,
+    w: PLAYER_SPRITE_W, 
+    h: PLAYER_SPRITE_H,
+    path: PLAYER_LEFT_STANDING_SPRITE_PATH,
+    flip_horizontally: true
   }
 end
 
@@ -83,4 +128,28 @@ def question_mark_sprite
     h: ROOM_BORDER_SPRITE_H,
     path: QUESTION_MARK_SPRITE_PATH
   }
+end
+
+def menu_border_sprite
+  {
+    x: 448, #this will need to change to a variable
+    y: 232,
+    w: 384, 
+    h: 256,
+    path: MENU_BORDER_SPRITE
+  }
+end
+
+def initial_select_border_sprite
+  {
+    x: 640+2*8,
+    y: 360-16*8,
+    w: 16*8, 
+    h: 16*8,
+    path: INITIAL_SELECT_BORDER_SPRITE
+  }
+
+  def set_x x
+    @x = x
+  end
 end
